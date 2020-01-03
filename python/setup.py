@@ -86,7 +86,7 @@ setup_requires = [
 setup(
     name="xain-proto",
     version=version["__version__"],
-    description="XAIN is an open source framework for federated learning.",
+    description="XAIN Protocol Buffers",
     long_description=readme,
     long_description_content_type="text/markdown",
     url="https://github.com/xainag/xain-proto",
@@ -101,7 +101,6 @@ setup(
         "Intended Audience :: Information Technology",
         "Intended Audience :: Science/Research",
         "Topic :: Scientific/Engineering",
-        "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Topic :: Software Development",
         "Topic :: Software Development :: Libraries",
         "Topic :: Software Development :: Libraries :: Application Frameworks",

@@ -19,3 +19,11 @@ For reference, the possible headings are:
 
 
 ## [Unreleased]
+
+## [0.1.0] - 2020-01-03
+
+The first public release of **xain-proto**
+
+### Added
+
+- XAIN FL "coordinator" and "hellonumproto" files
