@@ -48,16 +48,15 @@ message HeartbeatReply {
 message StartTrainingRequest {}
 
 message StartTrainingReply {
-  repeated numproto.protobuf.NDArray weights = 1;
+  string store_key = 1;
   int32 epochs = 2;
   int32 epoch_base = 3;
 }
 
 message EndTrainingRequest {
-  repeated numproto.protobuf.NDArray weights = 1;
   // number of training examples
-  int32 number_samples = 2;
-  map<string, Metrics> metrics = 3;
+  int32 number_samples = 1;
+  map<string, Metrics> metrics = 2;
 
   message Metrics {
     repeated numproto.protobuf.NDArray metrics = 1;
