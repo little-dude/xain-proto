@@ -54,14 +54,9 @@ message StartTrainingReply {
 }
 
 message EndTrainingRequest {
-  repeated numproto.protobuf.NDArray weights = 1;
-  // number of training examples
-  int32 number_samples = 2;
-  map<string, Metrics> metrics = 3;
-
-  message Metrics {
-    repeated numproto.protobuf.NDArray metrics = 1;
-  }
+  repeated numproto.protobuf.NDArray weights = 1;  // model weights
+  int32 number_samples = 2;  // aggregation meta data
+  map<string, numproto.protobuf.NDArray> metrics = 3;  // metrics data
 }
 
 message EndTrainingReply {}
