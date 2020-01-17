@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "numproto/protobuf/ndarray.proto";
+import "xain_proto/numproto/ndarray.proto";
 
 package hellonumproto;
 
@@ -8,10 +8,6 @@ service NumProtoServer {
   rpc SayHelloNumProto(NumProtoRequest) returns (NumProtoReply) {}
 }
 
-message NumProtoRequest {
-  numproto.protobuf.NDArray arr = 1;
-}
+message NumProtoRequest { xain_proto.numproto.NDArray arr = 1; }
 
-message NumProtoReply {
-  numproto.protobuf.NDArray arr = 1;
-}
+message NumProtoReply { xain_proto.numproto.NDArray arr = 1; }

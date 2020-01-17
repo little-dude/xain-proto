@@ -1,14 +1,16 @@
 syntax = "proto3";
 
-import "numproto/protobuf/ndarray.proto";
+import "xain_proto/numproto/ndarray.proto";
 
 package xain_proto.fl.coordinator;
 
 service Coordinator {
   rpc Rendezvous(RendezvousRequest) returns (RendezvousResponse) {}
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse) {}
-  rpc StartTrainingRound(StartTrainingRoundRequest) returns (StartTrainingRoundResponse) {}
-  rpc EndTrainingRound(EndTrainingRoundRequest) returns (EndTrainingRoundResponse) {}
+  rpc StartTrainingRound(StartTrainingRoundRequest)
+      returns (StartTrainingRoundResponse) {}
+  rpc EndTrainingRound(EndTrainingRoundRequest)
+      returns (EndTrainingRoundResponse) {}
 }
 
 enum RendezvousReply {
@@ -18,9 +20,7 @@ enum RendezvousReply {
 
 message RendezvousRequest {}
 
-message RendezvousResponse {
-  RendezvousReply reply = 1;
-}
+message RendezvousResponse { RendezvousReply reply = 1; }
 
 enum State {
   // Set by the coordinator to signal there is no round in progress
@@ -48,15 +48,15 @@ message HeartbeatResponse {
 message StartTrainingRoundRequest {}
 
 message StartTrainingRoundResponse {
-  repeated numproto.protobuf.NDArray weights = 1;  // model weights
-  int32 epochs = 2;  // number of epochs for the training round
-  int32 epoch_base = 3;  // global base epoch
+  repeated xain_proto.numproto.NDArray weights = 1; // model weights
+  int32 epochs = 2;     // number of epochs for the training round
+  int32 epoch_base = 3; // global base epoch
 }
 
 message EndTrainingRoundRequest {
-  repeated numproto.protobuf.NDArray weights = 1;  // model weights
-  int32 number_samples = 2;  // aggregation meta data
-  map<string, numproto.protobuf.NDArray> metrics = 3;  // metrics data
+  repeated xain_proto.numproto.NDArray weights = 1;     // model weights
+  int32 number_samples = 2;                             // aggregation meta data
+  map<string, xain_proto.numproto.NDArray> metrics = 3; // metrics data
 }
 
 message EndTrainingRoundResponse {}

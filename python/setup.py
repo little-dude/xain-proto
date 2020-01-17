@@ -33,36 +33,27 @@ class BuildPyCommand(build_py):
     def run(self):
         # we need to import this here or else these packages would have to be
         # installed in the system before we could run the setup.py
-        import numproto
         import grpc_tools
         from grpc_tools import protoc
-
-        # get the path of the numproto protofiles
-        # this will give us the path to the site-packages where numproto is
-        # installed
-        numproto_path = pathlib.Path(numproto.__path__[0]).parent
 
         # get the path of grpc_tools protofiles
         grpc_path = grpc_tools.__path__[0]
 
-        proto_files = [
-            name.replace(f"{proto_path}/", "")
-            for name in glob.glob("../src/xain_proto/fl/*.proto")
-        ]
+        proto_files = []
+        for path in get_proto_paths():
+            proto_files.extend(collect_protos(path))
 
         os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 
         for proto_file in proto_files:
             command = [
                 "grpc_tools.protoc",
-                # path to numproto .proto files
-                f"--proto_path={numproto_path}",
                 # path to google .proto files
                 f"--proto_path={grpc_path}/_proto",
+                # path to xain .proto files
                 f"--proto_path={proto_path}",
                 "--python_out=./",
                 "--grpc_python_out=./",
-                # "--mypy_out=./",
                 proto_file,
             ]
 
@@ -73,13 +64,29 @@ class BuildPyCommand(build_py):
         build_py.run(self)
 
 
+def collect_protos(path):
+    return [name.replace(f"{proto_path}/", "") for name in glob.glob(path)]
+
+
+def get_proto_paths():
+    return ["../src/xain_proto/fl/*.proto", "../src/xain_proto/numproto/*.proto"]
+
+
 setup_requires = [
-    "protobuf~=3.9",  # BSD
-    "grpcio~=1.23",  # Apache License 2.0
     "grpcio-tools~=1.23",  # Apache License 2.0
-    "numproto~=0.3",  # Apache License 2.0
-    # "mypy==0.750",  # MIT License
-    # "mypy-protobuf==1.16",  # Apache License 2.0
+]
+
+install_requires = [
+    "numpy~=1.15",  # BSD
+    "protobuf~=3.9",  # BSD
+]
+
+tests_require = [
+    "pytest==5.3.2",  # MIT license
+]
+
+dev_require = [
+    "twine==2.0.0",  # Apache License 2.0
     "wheel==0.33.6",  # MIT
 ]
 
@@ -113,8 +120,10 @@ setup(
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: POSIX :: Linux",
     ],
-    packages=find_packages(),
+    packages=find_packages(exclude=["tests"]),
     setup_requires=setup_requires,
+    install_requires=install_requires,
+    tests_require=tests_require,
+    extras_require={"test": tests_require, "dev": dev_require + tests_require,},
     cmdclass={"build_py": BuildPyCommand},
-    package_data={"xain_proto": ["fl/*.pyi"]},
 )
