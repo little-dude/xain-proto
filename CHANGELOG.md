@@ -20,6 +20,14 @@ For reference, the possible headings are:
 
 ## [Unreleased]
 
+## [0.3.0] - 2020-01-21
+
+Preparing for publishing to PyPI with matching version for `xain-fl` and `xain-sdk`
+
+- XP-333 can not build proto (#4)
+- XP-480 revise message names (#5)
+- XP-421 data format ai metrics (#3)
+
 ## [0.1.0] - 2020-01-03
 
 The first public release of **xain-proto**
