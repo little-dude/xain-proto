@@ -15,7 +15,7 @@ version_file_path = os.path.join(project_dir, "__version__.py")
 readme_file_path = os.path.join(project_dir, "../README.md")
 
 # path to xain proto
-proto_path = "../src/"
+proto_path = "../protobuf/"
 
 # get version
 version = {}
@@ -69,7 +69,7 @@ def collect_protos(path):
 
 
 def get_proto_paths():
-    return ["../src/xain_proto/fl/*.proto", "../src/xain_proto/numproto/*.proto"]
+    return ["../protobuf/xain_proto/fl/*.proto", "../protobuf/xain_proto/np/*.proto"]
 
 
 setup_requires = [
