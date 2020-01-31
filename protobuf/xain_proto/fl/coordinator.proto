@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-import "xain_proto/numproto/ndarray.proto";
+import "xain_proto/np/ndarray.proto";
 
-package xain_proto.fl.coordinator;
+package xain_proto.fl;
 
 service Coordinator {
   rpc Rendezvous(RendezvousRequest) returns (RendezvousResponse) {}
@@ -48,15 +48,15 @@ message HeartbeatResponse {
 message StartTrainingRoundRequest {}
 
 message StartTrainingRoundResponse {
-  repeated xain_proto.numproto.NDArray weights = 1; // model weights
-  int32 epochs = 2;     // number of epochs for the training round
-  int32 epoch_base = 3; // global base epoch
+  xain_proto.np.NDArray weights = 1; // model weights
+  int32 epochs = 2;                  // number of epochs for the training round
+  int32 epoch_base = 3;              // global base epoch
 }
 
 message EndTrainingRoundRequest {
-  repeated xain_proto.numproto.NDArray weights = 1;     // model weights
-  int32 number_samples = 2;                             // aggregation meta data
-  map<string, xain_proto.numproto.NDArray> metrics = 3; // metrics data
+  xain_proto.np.NDArray weights = 1;              // model weights
+  int32 number_samples = 2;                       // aggregation meta data
+  map<string, xain_proto.np.NDArray> metrics = 3; // metrics data
 }
 
 message EndTrainingRoundResponse {}
