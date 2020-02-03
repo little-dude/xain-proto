@@ -16,6 +16,7 @@ from xain_proto.np.ndarray_pb2 import NDArray
         np.array([[1, 2], [3, 4]], dtype=complex),
         np.zeros((3, 4)),
         np.ones((2, 3, 4), dtype=np.int16),
+        np.empty((0,)),
     ],
 )
 def test_numpy_to_proto_to_numpy(numpy_array: np.ndarray) -> None:
@@ -28,3 +29,9 @@ def test_numpy_to_proto_to_numpy(numpy_array: np.ndarray) -> None:
     serialized_array: NDArray = ndarray_to_proto(numpy_array=numpy_array)
     deserialized_array: np.ndarray = proto_to_ndarray(proto_array=serialized_array)
     assert np.array_equal(numpy_array, deserialized_array)
+
+
+def test_proto_to_numpy_empty() -> None:
+    """Test deserialization for empty messages."""
+
+    np.testing.assert_array_equal(proto_to_ndarray(proto_array=NDArray()), np.empty(shape=(0,)))

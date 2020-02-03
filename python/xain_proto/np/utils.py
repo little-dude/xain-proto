@@ -34,6 +34,9 @@ def proto_to_ndarray(proto_array: NDArray) -> np.ndarray:
         A numpy ndarray.
     """
 
+    if proto_array.ndarray == b"":
+        return np.empty(shape=(0,))
+
     bytes_array: BytesIO = BytesIO(proto_array.ndarray)
     numpy_array: np.ndarray = np.load(file=bytes_array, allow_pickle=False)
 
