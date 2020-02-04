@@ -20,6 +20,13 @@ For reference, the possible headings are:
 
 ## [Unreleased]
 
+## [0.4.0] - 2020-02-04
+
+Change protobuf definition to accept flattened arrays instead of lists.
+
+- PB-365 flatten weights (#8)
+- PB-365 consistify xain-proto naming and change to flattended model weights (#7)
+
 ## [0.3.0] - 2020-01-21
 
 Preparing for publishing to PyPI with matching version for `xain-fl` and `xain-sdk`
