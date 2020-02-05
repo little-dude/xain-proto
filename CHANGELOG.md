@@ -20,6 +20,8 @@ For reference, the possible headings are:
 
 ## [Unreleased]
 
+## [0.5.0] - (UNRELEASED)
+
 ## [0.4.0] - 2020-02-04
 
 Change protobuf definition to accept flattened arrays instead of lists.
