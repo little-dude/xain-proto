@@ -20,7 +20,12 @@ For reference, the possible headings are:
 
 ## [Unreleased]
 
-## [0.5.0] - (UNRELEASED)
+## [0.5.0] - 2020-02-12
+
+- PB-394 Change metrics type to string (#20) [Robert Steiner]
+- PB-119 consistify isort (#17) [janpetschexain]
+- PB-363 Start new development cycle (#18) [Anastasiia Tymoshchuk]
+- PB-363 :gem: Release v0.4.0. [Daniel Kravetz]
 
 ## [0.4.0] - 2020-02-04
 
