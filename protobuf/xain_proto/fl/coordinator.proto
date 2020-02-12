@@ -54,9 +54,9 @@ message StartTrainingRoundResponse {
 }
 
 message EndTrainingRoundRequest {
-  xain_proto.np.NDArray weights = 1;              // model weights
-  int32 number_samples = 2;                       // aggregation meta data
-  map<string, xain_proto.np.NDArray> metrics = 3; // metrics data
+  xain_proto.np.NDArray weights = 1; // model weights
+  int32 number_samples = 2;          // aggregation meta data
+  string metrics = 3;                // metrics data
 }
 
 message EndTrainingRoundResponse {}

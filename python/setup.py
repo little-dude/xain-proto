@@ -1,3 +1,4 @@
+from distutils.command.build_py import build_py
 import glob
 import os
 import os.path
@@ -5,7 +6,6 @@ import pathlib
 import sys
 
 from setuptools import find_packages, setup
-from distutils.command.build_py import build_py
 
 if sys.version_info < (3, 6):
     sys.exit("Please use Python version 3.6 or higher.")
@@ -88,6 +88,7 @@ tests_require = [
 dev_require = [
     "twine==2.0.0",  # Apache License 2.0
     "wheel==0.33.6",  # MIT
+    "isort==4.3.21",  # MIT
 ]
 
 setup(

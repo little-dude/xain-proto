@@ -34,4 +34,6 @@ def test_numpy_to_proto_to_numpy(numpy_array: np.ndarray) -> None:
 def test_proto_to_numpy_empty() -> None:
     """Test deserialization for empty messages."""
 
-    np.testing.assert_array_equal(proto_to_ndarray(proto_array=NDArray()), np.empty(shape=(0,)))
+    np.testing.assert_array_equal(
+        proto_to_ndarray(proto_array=NDArray()), np.empty(shape=(0,))
+    )
