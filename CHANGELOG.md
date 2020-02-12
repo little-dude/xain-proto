@@ -18,7 +18,8 @@ For reference, the possible headings are:
 - `Notes` for notes regarding this particular release.
 
 
-## [Unreleased]
+## [0.6.0] - (UNRELEASED)
+
 
 ## [0.5.0] - 2020-02-12
 
