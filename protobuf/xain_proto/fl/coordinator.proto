@@ -48,13 +48,12 @@ message HeartbeatResponse {
 message StartTrainingRoundRequest {}
 
 message StartTrainingRoundResponse {
-  xain_proto.np.NDArray weights = 1; // model weights
   int32 epochs = 2;                  // number of epochs for the training round
   int32 epoch_base = 3;              // global base epoch
 }
 
 message EndTrainingRoundRequest {
-  xain_proto.np.NDArray weights = 1; // model weights
+  string participant_id = 1;         // id of the participant
   int32 number_samples = 2;          // aggregation meta data
   string metrics = 3;                // metrics data
 }
